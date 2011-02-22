@@ -1,19 +1,27 @@
 !!! 5
 %html
   %head
-    %title PuzzleNode
+    %title
+      PuzzleNode
+      = current_user.admin? ? 'admin' : 'auth’d' if signed_in?
     = stylesheet_link_tag :all
     = javascript_include_tag :defaults
     = csrf_meta_tag
   %body
-    %div{style: 'text-align: right; font-size: 12px'}
-      - if signed_in?
-        = current_user.name
-        |
-        = link_to 'Log out', logout_path
-      - else
-        = link_to 'Sign up / Log in', login_path
-    - flash.each do |type, message|
-      %p
-        = message
+    %header
+      %h1 PuzzleNode
+    %nav
+      %p#login
+        - if signed_in?
+          = link_to 'log out', logout_path
+          = current_user.name
+        - else
+          log in via
+          = link_to 'GitHub', '/auth/github'
+          or
+          = link_to 'Twitter', '/auth/twitter'
+      %ul
+        %li= link_to_unless_current 'welcome', root_path
+        %li= link_to_unless_current 'puzzles', puzzles_path
+
     = yield
