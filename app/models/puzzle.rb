@@ -6,6 +6,16 @@ class Puzzle < ActiveRecord::Base
     write_attribute :fingerprint, sha1(tempfile)
   end
 
+  # FIXME: there must be a simpler way…
+  def solution_count
+    submissions.select(&:correct).map(&:user).uniq.size
+  end
+
+  # FIXME: should the below be done with scopes?
+  def solved_by?(user)
+    submissions.select(&:correct).any? { |s| s.user == user }
+  end
+
   def valid_solution?(tempfile)
     fingerprint == sha1(tempfile)
   end
