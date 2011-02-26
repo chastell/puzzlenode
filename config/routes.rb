@@ -6,6 +6,7 @@ Puzzlenode::Application.routes.draw do
   match '/login',  :to => 'sessions#new'
   
   resources :puzzles do
+    resources :comments,    :controller => 'Puzzles::Comments'
     resources :submissions, :controller => "Puzzles::Submissions"
   end
   
