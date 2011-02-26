@@ -6,3 +6,5 @@ gem 'pg'
 gem 'haml'
 
 gem 'omniauth'
+
+gem "compass", ">= 0.10.6"
