@@ -12,7 +12,8 @@ class Puzzles::SubmissionsController < ApplicationController
     @submission.user = current_user
     
     if @submission.save
-      redirect_to user_submission_path(current_user, @submission)
+      flash[:notice] = "You got it #{@submission.correct ? 'correct' : 'wrong'}!"
+      redirect_to puzzle_path(@submission.puzzle)
     else      
       render :action => :new
     end
