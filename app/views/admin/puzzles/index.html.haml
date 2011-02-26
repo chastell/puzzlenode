@@ -12,8 +12,8 @@
     %th
   - @puzzles.each do |puzzle|
     %tr
-      %td= link_to puzzle.name, puzzle_path(puzzle)
-      %td= puzzle.short_description
+      %td.puzzle-name= link_to puzzle.name, puzzle_path(puzzle)
+      %td.puzzle-desc= puzzle.short_description
       %td= puzzle.solution_count
       %td= puzzle.comments.size
       %td
