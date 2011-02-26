@@ -5,6 +5,14 @@
 @import compass/css3/border-radius
 @import compass/css3/box-shadow
 
+@font-face
+  font-family: 'Permanent Marker'
+  src: local('Permanent Marker'), local('PermanentMarker'), url('http://themes.googleusercontent.com/font?kit=9vYsg5VgPHKK8SXYbf3sMrg27BfaRSB61e9iDGqjWqk') format('truetype')
+
+@font-face
+  font-family: 'Walter Turncoat'
+  src: local('Walter Turncoat'), local('WalterTurncoat'), url('http://themes.googleusercontent.com/font?kit=sG9su5g4GXy1KP73cU3hvVtilBVlnnYjrhQJoWzUtmo') format('truetype')
+
 *
   text-align: center
 
@@ -24,12 +32,14 @@ h2
   margin-bottom: 0.5em
 
 footer, header
+  font-family: 'Permanent Marker', sans-serif
   margin: 1em
 
 input[type=text], textarea
   border: 1px solid #999
 
 nav
+  font-family: 'Permanent Marker', sans-serif
   ul
     float: left
     height: 1.75em
@@ -130,6 +140,7 @@ table
   +box-shadow(#ccc, 0, 0)
   border: 1px solid #ccc
   clear: both
+  font-family: 'Walter Turncoat', sans-serif
   padding: 1em
   position: relative
   z-index: 2
