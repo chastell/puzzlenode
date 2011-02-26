@@ -1,0 +1,25 @@
+%h2= @puzzle.name
+.puzzle-body= simple_format @puzzle.description
+
+- if @puzzle.solved_by? current_user
+  - form_for :comment, url: puzzle_comments_path(@puzzle), html: {class: 'comment-form'} do |f|
+    = f.text_area :body
+    %p= f.submit 'comment'
+  -# FIXME: factor out the comments into a partial
+  %h2.comment-title comments
+  - @puzzle.comments.each do |comment|
+    %p.comment-meta
+      by
+      = comment.user.name
+      on
+      = comment.created_at
+    .comment-body
+      = simple_format comment.body
+
+- elsif signed_in?
+  - form_for :submission, url: puzzle_submissions_path(@puzzle), html: {class: 'puzzle-solution', multipart: true} do |f|
+    %p.puzzle-file= f.file_field :file
+    %p.puzzle-submit= f.submit 'submit solution'
+
+- else
+  %p (Log in to solve this puzzle.)
