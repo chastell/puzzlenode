@@ -1,3 +1,141 @@
 @import blueprint/reset
 
 @import partials/base
+
+@import compass/css3/border-radius
+@import compass/css3/box-shadow
+
+*
+  text-align: center
+
+a
+  color: inherit
+
+body
+  margin: auto
+  max-width: 50em
+  width: 90%
+
+h1
+  font-size: 2em
+
+h2
+  font-size: 1.5em
+  margin-bottom: 0.5em
+
+footer, header
+  margin: 1em
+
+input[type=text], textarea
+  border: 1px solid #999
+
+nav
+  ul
+    float: left
+    height: 1.75em
+    margin-bottom: -1px
+    overflow: hidden
+    padding: 0 0.5em
+    li
+      border-bottom: 1px solid white
+      float: left
+      list-style: none
+      overflow: hidden
+      padding: .25em .25em 0
+      position: relative
+      z-index: 1
+      a
+        +border-top-radius(0.5em)
+        background: #eee
+        border-bottom: none
+        border: 1px solid #ccc
+        float: left
+        line-height: 1.5em
+        height: 1.5em
+        padding: 0 1em
+        text-decoration: none
+    .selected
+      z-index: 3
+      a
+        +box-shadow(#ccc, 0, 0)
+        background: white
+
+p
+  margin-bottom: 1em
+  text-align: inherit
+
+table
+  margin: 1em auto
+  td, th
+    padding: 0.25em
+    text-align: center
+  th
+    font-weight: bold
+
+.comment-body
+  text-align: left
+  p
+    margin: 0
+
+.comment-meta
+  margin: 0.5em 0 0 0
+  text-align: left
+
+.comment-form
+  margin: 1em
+  p
+    float: right
+  textarea
+    height: 5em
+    text-align: left
+    width: 99%
+
+.comment-title
+  margin: 0
+  text-align: left
+
+.puzzle-body
+  text-align: left
+
+.puzzle-edit
+  table
+    width: 100%
+    td
+      text-align: left
+      input, textarea
+        text-align: left
+        width: 80%
+    th
+      text-align: right
+      vertical-align: top
+      width: 20%
+
+.puzzle-file
+  float: left
+  text-align: left
+
+.puzzle-solution
+  padding-bottom: 2em
+
+.puzzle-submit
+  float: right
+  text-align: right
+
+#content
+  +border-radius(0.5em)
+  +border-top-right-radius(0)
+  +box-shadow(#ccc, 0, 0)
+  border: 1px solid #ccc
+  clear: both
+  padding: 1em
+  position: relative
+  z-index: 2
+
+#flash
+  color: red
+  li
+    list-style: none
+
+#login
+  float: right
+  margin: 0

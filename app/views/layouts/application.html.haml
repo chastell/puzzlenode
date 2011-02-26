@@ -31,7 +31,8 @@
         %li= link_to_unless_current 'welcome', root_path
         %li= link_to_unless_current 'puzzles', puzzles_path
 
-    = yield
+    #content
+      = yield
 
     %footer
       %p
