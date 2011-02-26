@@ -1,8 +1,16 @@
-%h1
-  %blink Puzzlenode
+%p Welcome to PuzzleNode – a set of fun and compelling Ruby progamming tasks to solve at your leisure.
+%p
+  View the available puzzles
+  = link_to 'on the puzzles page', puzzles_path
+  - if signed_in?
+    and
+  - else
+    – or log in via
+    = link_to 'GitHub', '/auth/github'
+    or
+    = link_to 'Twitter', '/auth/twitter'
+    to
+  start solving them right away.
 
-- if signed_in?
-  = "Welcome #{current_user.name}"
-  %p= link_to "Puzzles", puzzles_path
-- else
-  = link_to "Sign up / Log in", login_path
+%h2 announcements
+%p …here be announcements…
