@@ -1,16 +1,22 @@
-%h1 Admin > Puzzles
+%p
+  = link_to 'Add a new puzzle', new_admin_puzzle_path
+  or alter some of the existing ones:
 
-%p= link_to "New puzzle", new_admin_puzzle_path
-
+-# FIXME: probably should use the same partial as puzzle index
 %table
   %tr
-    %th Name
-    %th Short Description
+    %th name
+    %th description
+    %th solutions
+    %th comments
     %th
   - @puzzles.each do |puzzle|
     %tr
-      %td= link_to puzzle.name, edit_admin_puzzle_path(puzzle)
+      %td= link_to puzzle.name, puzzle_path(puzzle)
       %td= puzzle.short_description
-      %td= link_to "Destroy", admin_puzzle_path(puzzle),
-            :confirm => "Are you sure you wish to destroy this puzzle?",
-            :method  => "DELETE"
+      %td= puzzle.solution_count
+      %td= puzzle.comments.size
+      %td
+        = link_to 'edit', edit_admin_puzzle_path(puzzle)
+        |
+        = link_to 'delete', admin_puzzle_path(puzzle), confirm: 'Are you sure you wish to delete this puzzle?', method: 'DELETE'
