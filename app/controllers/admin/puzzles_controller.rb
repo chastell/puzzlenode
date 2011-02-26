@@ -13,7 +13,7 @@ class Admin::PuzzlesController < Admin::Base
     @puzzle = Puzzle.new(params[:puzzle])
     
     if @puzzle.save
-      flash[:notice] = "Puzzle sucessfully created"
+      flash[:notice] = 'Puzzle sucessfully created!'
       redirect_to admin_puzzles_path
     else
       render :action => :new
@@ -26,7 +26,7 @@ class Admin::PuzzlesController < Admin::Base
   
   def update
     if @puzzle.update_attributes(params[:puzzle])
-      flash[:notice] = "Puzzle sucessfully updated"
+      flash[:notice] = 'Puzzle sucessfully updated!'
       redirect_to admin_puzzles_path
     else
       render :action => :edit
@@ -36,7 +36,7 @@ class Admin::PuzzlesController < Admin::Base
   def destroy
     @puzzle.destroy
     
-    flash[:notice] = "Puzzle sucessfully destroyed"
+    flash[:notice] = 'Puzzle sucessfully deleted!'
     redirect_to admin_puzzles_path
   end
   
