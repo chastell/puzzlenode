@@ -28,8 +28,15 @@
           or
           = link_to 'Twitter', '/auth/twitter'
       %ul
-        %li= link_to_unless_current 'welcome', root_path
-        %li= link_to_unless_current 'puzzles', puzzles_path
+        %li{class: current_page?(root_path)    ? 'selected' : nil}= link_to 'news',    root_path
+        %li{class: current_page?(puzzles_path) ? 'selected' : nil}= link_to 'puzzles', puzzles_path
+        - if signed_in? and current_user.admin?
+          %li{class: current_page?(admin_puzzles_path) ? 'selected' : nil}= link_to 'puzzle admin', admin_puzzles_path
+          %li{class: current_page?(admin_users_path)   ? 'selected' : nil}= link_to 'user admin',   admin_users_path
+        - if @puzzle
+          %li.selected= link_to @puzzle.name, puzzle_path
+        - if @user
+          %li.selected= link_to @user.name, user_path
 
     #content
       = yield
