@@ -1,13 +1,17 @@
-%h1 Puzzles
-
-%table
-  %tr
-    %th Name
-    %th Short Description
-    %th
-  - @puzzles.each do |puzzle|
-    %tr
-      %td= puzzle.name
-      %td= puzzle.short_description
-      %td= button_to "Submit solution", new_puzzle_submission_path(puzzle),
-        :method => :get
+-# FIXME: probably should be done with a partial
+- leads = ['Choose wisely from the below list of puzzles to solve:', 'Previously solved by you:']
+- @puzzles.partition { |p| p.solved_by? current_user }.reverse.zip(leads).each do |puzzles, lead|
+  - unless puzzles.empty?
+    %p= lead
+    %table
+      %tr
+        %th name
+        %th description
+        %th solutions
+        %th comments
+      - puzzles.each do |puzzle|
+        %tr
+          %td= link_to puzzle.name, puzzle_path(puzzle)
+          %td= puzzle.short_description
+          %td= puzzle.solution_count
+          %td= puzzle.comments.size
