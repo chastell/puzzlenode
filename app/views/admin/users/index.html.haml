@@ -1,0 +1,17 @@
+%table
+  %tr
+    %th name
+    %th solved
+    %th comments
+    %th admin?
+    %th
+  - @users.each do |user|
+    %tr
+      %td= user.name
+      %td= user.solution_count
+      %td= user.comments.size
+      %td= '✓' if user.admin?
+      %td
+        = link_to 'edit', edit_admin_user_path(user)
+        |
+        = link_to 'delete', admin_user_path(user), confirm: 'Are you sure you wish to delete this user?', method: 'DELETE'

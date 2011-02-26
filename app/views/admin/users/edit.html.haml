@@ -1,0 +1,9 @@
+= form_for @user, url: admin_user_path(@user), html: {multipart: true} do |f|
+  %table
+    %tr
+      %th= f.label :name, 'name'
+      %td= f.text_field :name
+    %tr
+      %th= f.label :admin, 'admin?'
+      %td= f.check_box :admin
+  %p= f.submit 'save user'
