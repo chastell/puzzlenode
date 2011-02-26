@@ -1,5 +1,20 @@
-%h1 Admin > Puzzles > New
-
-= form_for @puzzle, :url => admin_puzzles_path,
-  :html => {:multipart => true} do |f|
-  = render :partial => "form", :locals => {:f => f}
+= form_for @puzzle, url: admin_puzzles_path, html: {class: 'puzzle-edit', multipart: true} do |f|
+  %table
+    %tr
+      %th= f.label :name, 'name'
+      %td= f.text_field :name
+    %tr
+      %th= f.label :short_description, 'short'
+      %td= f.text_field :short_description
+    %tr
+      %th= f.label :description, 'description'
+      %td= f.text_area :description
+    - unless @puzzle.fingerprint.blank?
+      %tr
+        %th
+          %label fingerprint
+        %td= @puzzle.fingerprint
+    %tr
+      %th= f.label :file, 'solution file'
+      %td= f.file_field :file
+  %p= f.submit 'create puzzle'
